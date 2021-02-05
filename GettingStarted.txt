@@ -1,0 +1,17 @@
+To view all these commands on Terminal, run:: egrep '^\s+\$' GettingStarted.txt | sed -e 's@\$@@'
+
+
+Commands::
+
+    # Generate your digitalocean API token: https://cloud.digitalocean.com/account/api/tokens
+    $ DO="type_your_token_here"
+    # Prepare your working directory for other commands
+    $ terraform init
+    # Check whether the configuration is valid
+    $ terraform validate
+    # Show changes required by the current configuration
+    $ terraform plan -out=.tfplan -var-file=fra1.tfvars -var "do_token=$DO"
+    # Create or update infrastructure
+    $ terraform apply -var-file=fra1.tfvars -var "do_token=$DO"
+    # Destroy previously-created infrastructure
+    $ terraform destroy -var-file=fra1.tfvars -var "do_token=$DO"
