@@ -1,7 +1,7 @@
 # Output details the private IP4 addresses of the eployed droplet(s)
 output "droplet_private_ip4_addresses" {
   value = {
-    for droplet in digitalocean_droplet.this_droplet:
+    for droplet in digitalocean_droplet.this_droplet :
     droplet.name => droplet.ipv4_address_private
   }
 }
@@ -9,7 +9,7 @@ output "droplet_private_ip4_addresses" {
 # Output details the public IP4 addresses of the eployed droplet(s)
 output "droplet_public_ip4_addresses" {
   value = {
-    for droplet in digitalocean_droplet.this_droplet:
+    for droplet in digitalocean_droplet.this_droplet :
     droplet.name => droplet.ipv4_address
   }
 }
