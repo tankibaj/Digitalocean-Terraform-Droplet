@@ -56,10 +56,9 @@ runcmd:
   - [ bash, -c, 'git clone https://github.com/tankibaj/uTorrent-Server-Webui-Docker.git /home/naim/utorrent']
   - [ bash, -c, 'mkdir /home/naim/utorrent/downloads']
   - [ bash, -c, 'mkdir /home/naim/utorrent/torrentfiles']
-  - [ bash, -c, 'cd /home/naim/utorrent/']
   - [ bash, -c, 'curl -sSL https://get.docker.com/ | bash' ]
-  - [ bash, -c, 'docker build -t utorrent:latest .']
-
+  - [ bash, -c, 'cd /home/naim/utorrent/ && docker build -t utorrent:latest .']
+  - [ bash, -c, 'docker run -d -p 8080:8080 -p 6881:6881 -p 6881:6881/udp -v /home/naim/utorrent/downloads:/torrent/downloads -v /home/naim/utorrent/torrentfiles:/torrent/torrentfiles utorrent:latest']
 
 # |- Set user passwords
 # chpasswd:
