@@ -8,6 +8,8 @@ A quick terraform guide for setting up droplet with user-data in digitalocean.
 
 - Clone this repo
 
+  `git clone https://github.com/tankibaj/Digitalocean-Terraform-Droplet.git`
+
 - Generate your digitalocean API token: https://cloud.digitalocean.com/account/api/tokens
 
   `export TF_VAR_do_token="type_your_token_here"`
