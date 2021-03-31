@@ -6,7 +6,7 @@ variable "do_token" {}
 # Set droplet count
 variable "droplet_count" {
   type    = number
-  default = 3
+  default = 1
 }
 
 # Set droplet image
