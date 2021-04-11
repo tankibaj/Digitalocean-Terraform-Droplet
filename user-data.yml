@@ -7,7 +7,7 @@ timezone: Europe/Berlin
 # manage_etc_hosts: true
 
 # |- Update hostname and fqdn
-# hostname: docker
+hostname: doshare
 #fqdn: web01.example.com
 
 # |- Configure apt for the user
@@ -53,12 +53,6 @@ runcmd:
   - sed -i -e '/^PermitRootLogin/s/^.*$/PermitRootLogin no/' /etc/ssh/sshd_config
   - sed -i -e '$aAllowUsers naim' /etc/ssh/sshd_config
   - [ bash, -c, 'sudo systemctl restart ssh']
-  - [ bash, -c, 'git clone https://github.com/tankibaj/uTorrent-Server-Webui-Docker.git /home/naim/utorrent']
-  - [ bash, -c, 'mkdir /home/naim/utorrent/downloads']
-  - [ bash, -c, 'mkdir /home/naim/utorrent/torrentfiles']
-  - [ bash, -c, 'curl -sSL https://get.docker.com/ | bash' ]
-  - [ bash, -c, 'cd /home/naim/utorrent/ && docker build -t utorrent:latest .']
-  - [ bash, -c, 'docker run -d -p 8080:8080 -p 6881:6881 -p 6881:6881/udp -v /home/naim/utorrent/downloads:/torrent/downloads -v /home/naim/utorrent/torrentfiles:/torrent/torrentfiles utorrent:latest']
 
 # |- Set user passwords
 # chpasswd:
