@@ -7,10 +7,6 @@ User-data is arbitrary data that a user can supply to a Droplet during its creat
 
 ## Quickstart
 
-- Clone this repo
-
-  `git clone https://github.com/tankibaj/Digitalocean-Terraform-Droplet.git`
-
 - Generate your digitalocean API token: https://cloud.digitalocean.com/account/api/tokens
 
   `export TF_VAR_do_token="type_your_token_here"`
