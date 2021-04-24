@@ -1,6 +1,6 @@
 ## Digitalocean Terraform
 
-A quick terraform guide for setting up droplet with user-data in digitalocean.
+Provision droplet(s) using Terraform and Cloud-init.
 
 User-data is arbitrary data that a user can supply to a Droplet during its creation time. User-data can be consumed by CloudInit, typically during the first boot of a cloud server, to perform tasks or run scripts as the root user–this can be extremely useful when provisioning a server.
 
