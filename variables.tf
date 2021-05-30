@@ -3,12 +3,6 @@
 # or using -var="do_token=..." CLI option
 variable "do_token" {}
 
-# Set droplet count
-variable "droplet_count" {
-  type    = number
-  default = 1
-}
-
 # Set droplet image
 variable "droplet_image" {
   type    = string
@@ -25,4 +19,24 @@ variable "region" {
 variable "droplet_size" {
   type    = string
   default = "s-1vcpu-1gb"
+}
+
+variable "domain" {
+  type        = string
+  description = "The domain name to use"
+}
+
+variable "subdomain_name" {
+  type        = string
+  description = "The subdomain name what will be create"
+}
+
+variable "cloudflare_email" {
+  type        = string
+  description = "The email associated with the Cloudflare account"
+}
+
+variable "cloudflare_api_token" {
+  type        = string
+  description = "The Cloudflare API Token"
 }
