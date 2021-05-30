@@ -3,19 +3,19 @@
 # or using -var="do_token=..." CLI option
 variable "do_token" {}
 
-# Set droplet image
 variable "droplet_image" {
-  type    = string
-  default = "ubuntu-20-04-x64"
+  type        = string
+  default     = "ubuntu-20-04-x64"
+  description = "Set the image of droplet"
 }
 
-# Set region
 variable "region" {
-  type    = string
-  default = "fra1"
+  type        = string
+  default     = "fra1"
+  description = "Set the region"
 }
 
-# Set droplet size
+# https://developers.digitalocean.com/documentation/v2/#resize-a-droplet
 variable "droplet_size" {
   type    = string
   default = "s-1vcpu-1gb"

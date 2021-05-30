@@ -14,11 +14,11 @@ data "digitalocean_ssh_key" "personal" {
 # Create Droplet(s)
 # ****************************************************************
 resource "digitalocean_droplet" "this" {
-  image    = var.droplet_image
-  name     = "${random_pet.name.id}-${var.region}"
-  region   = var.region
-  size     = var.droplet_size
-  ssh_keys = [data.digitalocean_ssh_key.personal.id]
+  image     = var.droplet_image
+  name      = "${random_pet.name.id}-${var.region}"
+  region    = var.region
+  size      = var.droplet_size
+  ssh_keys  = [data.digitalocean_ssh_key.personal.id]
   user_data = file("user-data.yml")
 }
 
