@@ -18,7 +18,7 @@ variable "region" {
 # https://developers.digitalocean.com/documentation/v2/#resize-a-droplet
 variable "droplet_size" {
   type    = string
-  default = "s-1vcpu-1gb"
+  default = "s-1vcpu-2gb"
 }
 
 variable "domain" {
