@@ -31,3 +31,6 @@ terraform.rc
 
 # Ignore token file
 .token
+
+# Ignore .auto.tfvars
+*.auto.tfvars
