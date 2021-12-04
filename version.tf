@@ -14,13 +14,6 @@ terraform {
     }
 
   }
-  backend "remote" {
-    organization = "thenaim"
-
-    workspaces {
-      name = "digitalocean-droplet-ut"
-    }
-  }
 }
 
 provider "random" {}
