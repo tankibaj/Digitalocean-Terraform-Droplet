@@ -1,15 +1,7 @@
-# Output details the private IP4 addresses of the eployed droplet(s)
-output "droplet_private_ip4_addresses" {
-  value = {
-    for droplet in digitalocean_droplet.this_droplet :
-    droplet.name => droplet.ipv4_address_private
-  }
+output "ipv4" {
+  value = digitalocean_droplet.this.ipv4_address
 }
 
-# Output details the public IP4 addresses of the eployed droplet(s)
-output "droplet_public_ip4_addresses" {
-  value = {
-    for droplet in digitalocean_droplet.this_droplet :
-    droplet.name => droplet.ipv4_address
-  }
+output "url" {
+  value = "https://${cloudflare_record.this.hostname}/gui"
 }
