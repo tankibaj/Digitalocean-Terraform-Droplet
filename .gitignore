@@ -1,4 +1,5 @@
 .DS_Store
+.idea
 
 # Local .terraform directories
 **/.terraform/*
@@ -33,8 +34,4 @@ terraform.rc
 .token
 
 # Ignore .auto.tfvars
-<<<<<<< HEAD
 *.auto.tfvars
-=======
-*.auto.tfvars
->>>>>>> droplet
