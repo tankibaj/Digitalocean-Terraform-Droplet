@@ -3,16 +3,9 @@
 # or using -var="do_token=..." CLI option
 variable "do_token" {}
 
-<<<<<<< HEAD
-# Set droplet count
-variable "droplet_count" {
-  type    = number
-  default = 1
-=======
 variable "zone" {
   type        = string
   description = "The name of domain"
->>>>>>> droplet
 }
 
 variable "record" {
