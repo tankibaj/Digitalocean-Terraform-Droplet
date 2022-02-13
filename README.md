@@ -1,17 +1,8 @@
 ## Digitalocean Terraform
 
-Provision droplet(s) using Terraform and Cloud-init.
-
-User-data is arbitrary data that a user can supply to a Droplet during its creation time. User-data can be consumed by CloudInit, typically during the first boot of a cloud server, to perform tasks or run scripts as the root user–this can be extremely useful when provisioning a server.
-
+Provision droplet(s) using Terraform.
 
 ## Quickstart
-
-<<<<<<< HEAD
-- Generate your digitalocean API token: https://cloud.digitalocean.com/account/api/tokens
-
-  `export TF_VAR_do_token="type_your_token_here"`
-=======
 
 - Environment variables
   
@@ -23,8 +14,7 @@ User-data is arbitrary data that a user can supply to a Droplet during its creat
     export TF_VAR_zone='domain_name'
     export TF_VAR_record='subdomain'
     ```
->>>>>>> droplet
-
+  
 - Prepare your working directory for other commands
 
   `terraform init`
