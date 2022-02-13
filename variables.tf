@@ -3,32 +3,14 @@
 # or using -var="do_token=..." CLI option
 variable "do_token" {}
 
-variable "droplet_image" {
+variable "zone" {
   type        = string
-  default     = "ubuntu-20-04-x64"
-  description = "Set the image of droplet"
+  description = "The name of domain"
 }
 
-variable "region" {
+variable "record" {
   type        = string
-  default     = "fra1"
-  description = "Set the region"
-}
-
-# https://developers.digitalocean.com/documentation/v2/#resize-a-droplet
-variable "droplet_size" {
-  type    = string
-  default = "s-1vcpu-2gb"
-}
-
-variable "domain" {
-  type        = string
-  description = "The domain name to use"
-}
-
-variable "subdomain_name" {
-  type        = string
-  description = "The subdomain name what will be create"
+  description = "The name of record [subdomain]"
 }
 
 variable "cloudflare_email" {

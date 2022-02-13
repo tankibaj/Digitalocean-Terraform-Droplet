@@ -1,42 +1,27 @@
-# ****************************************************************
-# Random Name Generator
-# ****************************************************************
 resource "random_pet" "name" {}
 
-# ****************************************************************
-# Use existing personal SSH key
-# ****************************************************************
 data "digitalocean_ssh_key" "personal" {
   name = "thenaim"
 }
 
-# ****************************************************************
-# Create Droplet(s)
-# ****************************************************************
 resource "digitalocean_droplet" "this" {
-  image     = var.droplet_image
-  name      = "${random_pet.name.id}-${var.region}"
-  region    = var.region
-  size      = var.droplet_size
+  image     = "ubuntu-20-04-x64"
+  name      = random_pet.name.id
+  region    = "fra1"
+  size      = "s-1vcpu-2gb"
   ssh_keys  = [data.digitalocean_ssh_key.personal.id]
-  user_data = file("user-data.yml")
+#  user_data = file("user-data.yml")
 }
 
-# ****************************************************************
-# Fetch Cloudflare zones data
-# ****************************************************************
 data "cloudflare_zones" "domain" {
   filter {
-    name = var.domain
+    name = var.zone
   }
 }
 
-# ****************************************************************
-# Create Cloudflare A record
-# ****************************************************************
 resource "cloudflare_record" "this" {
   zone_id = data.cloudflare_zones.domain.zones[0].id
-  name    = var.subdomain_name
+  name    = var.record
   value   = digitalocean_droplet.this.ipv4_address
   type    = "A"
   ttl     = 1
