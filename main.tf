@@ -5,12 +5,12 @@ data "digitalocean_ssh_key" "personal" {
 }
 
 resource "digitalocean_droplet" "this" {
-  image     = "ubuntu-20-04-x64"
-  name      = random_pet.name.id
-  region    = "fra1"
-  size      = "s-1vcpu-2gb"
-  ssh_keys  = [data.digitalocean_ssh_key.personal.id]
-#  user_data = file("user-data.yml")
+  image    = "ubuntu-20-04-x64"
+  name     = random_pet.name.id
+  region   = "fra1"
+  size     = "s-1vcpu-2gb"
+  ssh_keys = [data.digitalocean_ssh_key.personal.id]
+  #  user_data = file("user-data.yml")
 }
 
 data "cloudflare_zones" "domain" {
