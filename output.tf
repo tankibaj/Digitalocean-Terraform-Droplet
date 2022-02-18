@@ -3,5 +3,5 @@ output "ipv4" {
 }
 
 output "url" {
-  value = "https://${cloudflare_record.this.hostname}/gui"
+  value = cloudflare_record.this.hostname
 }
