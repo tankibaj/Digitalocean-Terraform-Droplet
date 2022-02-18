@@ -1,0 +1,43 @@
+#cloud-config
+
+# |- Set timezone
+timezone: Europe/Berlin
+
+# |- Update /etc/hosts
+manage_etc_hosts: true
+
+# |- Update hostname and fqdn
+hostname: ${HOST_NAME}
+
+# |-Update apt database on first boot | Default: true
+package_update: true
+
+# |- Upgrade the instance on first boot | Default: false
+package_upgrade: false
+
+# |- Install additional packages on first boot | Default: non
+packages:
+    - curl
+    - unzip
+    - rsync
+    - zsh
+
+# |- Configure users and groups
+users:
+  - name: ${USERNAME}
+    ssh-authorized-keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICvkJkyr4cut+5HnDDcpD5cbN4489pHqXKSrdpbMNI/3
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    groups: sudo, adm
+    shell: /bin/bash
+
+# |- Run arbitrary commands. Each item can be either a list or a string. All commands must be proper yaml
+runcmd:
+  - sed -i -e '/^PermitRootLogin/s/^.*$/PermitRootLogin no/' /etc/ssh/sshd_config
+  - sed -i -e '$aAllowUsers ${USERNAME}' /etc/ssh/sshd_config
+  - restart ssh
+  - [ wget, "https://raw.githubusercontent.com/tankibaj/dotfiles-ubuntu/main/install.sh", -O, /home/${USERNAME}/dotfiles.sh ]
+  - chmod +x /home/${USERNAME}/dotfiles.sh
+
+# |- Output final message when cloud-init has finished
+final_message: "The system is finally up, after $UPTIME seconds"

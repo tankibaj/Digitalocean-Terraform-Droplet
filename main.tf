@@ -1,3 +1,8 @@
+locals {
+  host_name = "droplet"
+  user_name = "naim"
+}
+
 resource "random_pet" "name" {}
 
 data "digitalocean_ssh_key" "personal" {
@@ -5,12 +10,12 @@ data "digitalocean_ssh_key" "personal" {
 }
 
 resource "digitalocean_droplet" "this" {
-  image    = "ubuntu-20-04-x64"
-  name     = random_pet.name.id
-  region   = "fra1"
-  size     = "s-1vcpu-2gb"
-  ssh_keys = [data.digitalocean_ssh_key.personal.id]
-  #  user_data = file("user-data.yml")
+  image     = "ubuntu-20-04-x64"
+  name      = random_pet.name.id
+  region    = "fra1"
+  size      = "s-1vcpu-1gb"
+  ssh_keys  = [data.digitalocean_ssh_key.personal.id]
+  user_data = templatefile("${path.module}/user-data.yaml", { HOST_NAME = local.host_name, USERNAME = local.user_name })
 }
 
 data "cloudflare_zones" "domain" {
