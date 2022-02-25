@@ -9,10 +9,6 @@ Provision droplet(s) using Terraform.
     Generate your digitalocean API token: https://cloud.digitalocean.com/account/api/tokens
     ```bash
     export TF_VAR_do_token='digitalocean_token'
-    export TF_VAR_cloudflare_email='cloudflare_email'
-    export TF_VAR_cloudflare_api_token='cloudflare_api_token'
-    export TF_VAR_zone='domain_name'
-    export TF_VAR_record='subdomain'
     ```
   
 - Prepare your working directory for other commands

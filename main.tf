@@ -17,18 +17,3 @@ resource "digitalocean_droplet" "this" {
   ssh_keys  = [data.digitalocean_ssh_key.personal.id]
   user_data = templatefile("${path.module}/user-data.yaml", { HOST_NAME = local.host_name, USERNAME = local.user_name })
 }
-
-data "cloudflare_zones" "domain" {
-  filter {
-    name = var.zone
-  }
-}
-
-resource "cloudflare_record" "this" {
-  zone_id = data.cloudflare_zones.domain.zones[0].id
-  name    = var.record
-  value   = digitalocean_droplet.this.ipv4_address
-  type    = "A"
-  ttl     = 1
-  proxied = true
-}
